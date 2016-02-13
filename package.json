@@ -28,7 +28,7 @@
     "url": "https://github.com/BankFacil/vanilla-masker/issues"
   },
   "homepage": "http://bankfacil.github.io/vanilla-masker",
-  "dependencies": {
+  "devDependencies": {
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-connect": "^0.7.1",
     "grunt-contrib-uglify": "^0.4.0",
