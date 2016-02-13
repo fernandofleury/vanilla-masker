@@ -14,11 +14,11 @@ module.exports = function(grunt) {
         separator: ";"
       },
       dev: {
-        src: ["lib/vanilla-masker.js"],
+        src: ["lib/vanilla-masker.js", "lib/vmasker.js", "lib/vmasker/*.js"],
         dest: "public/vanilla-masker.js"
       },
       build: {
-        src: ["lib/vanilla-masker.js"],
+        src: ["lib/vanilla-masker.js", "lib/vmasker.js", "lib/vmasker/*.js"],
         dest: "build/vanilla-masker.min.js"
       }
     },
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
     // Jasmine Runner ================================
     jasmine: {
       dev: {
-        src: ['lib/vanilla-masker.js'],
+        src: ['lib/vanilla-masker.js', 'lib/vmasker.js', 'lib/vmasker/*.js'],
         options: {
           specs: 'tests/*_spec.js'
         }
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
 
     // JSHint ========================================
     jshint: {
-      all: ["lib/vanilla-masker.js"]
+      all: ["lib/*.js", "lib/vmasker/*.js"]
     },
 
     // Minification ==================================
