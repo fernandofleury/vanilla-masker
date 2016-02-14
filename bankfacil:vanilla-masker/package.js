@@ -1,6 +1,6 @@
 Package.describe({
   summary: "VanillaMasker is a pure javascript input mask.",
-  version: "1.0.9",
+  version: "1.1.0",
   git: "https://github.com/BankFacil/vanilla-masker"
 });
 
