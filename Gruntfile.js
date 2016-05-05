@@ -89,4 +89,5 @@ module.exports = function(grunt) {
   grunt.registerTask("build", ["default", "clean:build", "concat:build", "uglify", "compress"]);
   grunt.registerTask("reload", ["clean:dev", "concat:dev", "default"]);
   grunt.registerTask("default", ["jshint", "jasmine:dev"]);
+  grunt.registerTask("test", ["default"]);
 };
