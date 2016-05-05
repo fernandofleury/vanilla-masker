@@ -69,7 +69,7 @@ module.exports = function(grunt) {
       livereload: {
         options: { livereload: true },
         files: ['lib/*', 'tests/*', 'Gruntfile.js', 'package.json'],
-        tasks: ['default']
+        tasks: ['reload']
       }
     }
 
@@ -85,8 +85,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks("grunt-contrib-watch");
 
-  grunt.registerTask("default", ["jshint", "jasmine:dev"]);
-  grunt.registerTask("test", ["default"]);
   grunt.registerTask("dev", ["default", "clean:dev", "concat:dev", "connect", "watch"]);
   grunt.registerTask("build", ["default", "clean:build", "concat:build", "uglify", "compress"]);
+  grunt.registerTask("reload", ["clean:dev", "concat:dev", "default"]);
+  grunt.registerTask("default", ["jshint", "jasmine:dev"]);
 };
