@@ -126,6 +126,13 @@ VMasker(el).maskPattern("(99) 9999-9999"); // masking the input
 VMasker(el).unMask(); // unmask!
 ```
 
+#### Strict mode
+
+``` javascript
+// Prevents the input element from unnecessary chars
+VMasker.isStrict = true;
+```
+
 #### Dynamic mask
 
 Sometimes you need swap the mask according with value.
