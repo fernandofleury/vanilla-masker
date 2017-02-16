@@ -236,6 +236,11 @@ Thiago Lagden - lagden@gmail.com
 
 # Changelog
 
+## 1.1.1 - 16/02/2017
+
+* Fixed gz output file
+* Converted package.json dependencies into devDependencies
+
 ## 1.1.0 - 13/08/2015
 
 * Improved demo page layout - [See this pull request](https://github.com/Creditas/vanilla-masker/pull/40)
