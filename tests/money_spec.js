@@ -80,4 +80,16 @@ describe("VanillaMasker.toMoney", function() {
     expect(VMasker.toMoney(100000000, {zeroCents: true})).toEqual('100.000.000,00');
   });
 
+  it('returns -3,75 when showSignal is true', function() {
+    expect(VMasker.toMoney(-375, {showSignal: true})).toEqual('-3,75');
+  });
+
+  it('returns 3,75 when showSignal is true and showPositiveSignal is false(default)', function() {
+    expect(VMasker.toMoney(375, {showSignal: true})).toEqual('3,75');
+  });
+
+  it('returns +3,75 when showSignal is true and showPositiveSignal is true', function() {
+    expect(VMasker.toMoney(375, {showSignal: true, showPositiveSignal: true})).toEqual('+3,75');
+  });
+
 });
