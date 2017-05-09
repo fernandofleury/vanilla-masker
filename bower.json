@@ -2,7 +2,7 @@
   "name": "vanilla-masker",
   "version": "1.1.1",
   "description": "VanillaMasker is a pure javascript input mask.",
-  "homepage": "http://bankfacil.github.io/vanilla-masker/",
+  "homepage": "https://fleury.io/vanilla-masker/",
   "repository": {
     "type": "git",
     "url": "git://github.com/Creditas/vanilla-masker.git"
@@ -16,7 +16,7 @@
   ],
   "main": "lib/vanilla-masker.js",
   "license": "MIT <http://bankfacil.mit-license.org>",
-  "bugs": "https://github.com/Creditas/vanilla-masker/issues",
+  "bugs": "https://github.com/fernandofleury/vanilla-masker/issues",
   "ignore": [
     "*.yml",
     "**/.*",

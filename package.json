@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Creditas/vanilla-masker.git"
+    "url": "git://github.com/fernandofleury/vanilla-masker.git"
   },
   "keywords": [
     "mask input",
@@ -25,9 +25,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Creditas/vanilla-masker/issues"
+    "url": "https://github.com/fernandofleury/vanilla-masker/issues"
   },
-  "homepage": "http://bankfacil.github.io/vanilla-masker",
+  "homepage": "https://fleury.io/vanilla-masker/",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.0.0",
