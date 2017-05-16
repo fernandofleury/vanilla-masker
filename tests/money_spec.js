@@ -79,5 +79,68 @@ describe("VanillaMasker.toMoney", function() {
   it('returns 100.000.000,00 when zeroCents is true', function() {
     expect(VMasker.toMoney(100000000, {zeroCents: true})).toEqual('100.000.000,00');
   });
+});
+
+describe("VanillaMasker.unmaskMoney", function() {
+
+  it('unmasks the default money string', function() {
+    expect(VMasker.unmaskMoney('100.000.000,00')).toEqual(100000000);
+  });
+
+  it('unmasks a shorter money string', function() {
+    expect(VMasker.unmaskMoney('1.000,00')).toEqual(1000);
+  });
+
+  it('returns 0 money when money is 0,00', function() {
+    expect(VMasker.unmaskMoney('0,00')).toEqual(0);
+  });
+
+  it('returns 0,01 money when number is 1', function() {
+    expect(VMasker.unmaskMoney('0,01')).toEqual(0.01);
+  });
+
+  it('returns 0,10 default money number is 10', function() {
+    expect(VMasker.unmaskMoney('0,10')).toEqual(0.1);
+  });
+
+  it('returns 199,59 money when number is 199.59 with decimal', function() {
+    expect(VMasker.unmaskMoney('199,59')).toEqual(199.59);
+  });
+
+  it('returns 1000 money when precision is 0', function() {
+    expect(VMasker.unmaskMoney('1.000', {precision: 0})).toEqual(1000);
+  });
+
+  it('returns 1000 money when precision is 3', function() {
+    expect(VMasker.unmaskMoney('1.000,000', {precision: 3})).toEqual(1000);
+  });
+
+  it('returns 100000000 when unit is R$', function() {
+    expect(VMasker.unmaskMoney('R$ 100.000.000,00', {unit: 'R$'})).toEqual(100000000);
+  });
+
+  it('returns a 100000000 when unit is $R and suffix is R$', function() {
+    expect(VMasker.unmaskMoney('R$ 100.000.000,00 $R', {unit: 'R$', suffixUnit: "$R"})).toEqual(100000000);
+  });
+
+  it('returns R$ 10.000,00 when suffix is R$', function() {
+    expect(VMasker.unmaskMoney('100.000.000,00 R$', {suffixUnit: 'R$'})).toEqual(100000000);
+  });
+
+  it('returns 100000000 when delimiter is ","', function() {
+    expect(VMasker.unmaskMoney('100,000,000,00', {delimiter: ','})).toEqual(100000000);
+  });
+
+  it('returns 100000000 when delimiter is "," and separator is "."', function() {
+    expect(VMasker.unmaskMoney('100,000,000.00', {delimiter: ',' , separator: '.'})).toEqual(100000000);
+  });
+
+  it('returns 100000000 when separator is "."', function() {
+    expect(VMasker.unmaskMoney('100.000.000.00', {separator: '.'})).toEqual(100000000);
+  });
+
+  it('returns 100000000 when zeroCents is true', function() {
+    expect(VMasker.unmaskMoney('100.000.000,00', {zeroCents: true})).toEqual(100000000);
+  });
 
 });

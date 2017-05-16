@@ -99,6 +99,79 @@ describe("VanillaMasker.toPattern", function() {
   it('returns "(aaa) _____" when input is aaa999aaaa and placeholder is _', function(){
     expect(VMasker.toPattern('aaa999aaaa', {pattern: "(AAA) AAAAA", placeholder: "_"})).toEqual('(aaa) _____');
   });
+});
 
+describe("VanillaMasker.unmaskPattern", function() {
 
+  it('unmasks the masked value "(61)" to 61', function() {
+    expect(VMasker.unmaskPattern('(61)', '(99)')).toEqual('61');
+  });
+
+  it('unmasks the masked value "(61) 91234-5678" to 61912345678', function() {
+    expect(VMasker.unmaskPattern('(61) 91234-5678', '(99) 99999-9999')).toEqual('61912345678');
+  });
+
+  it('unmasks the masked value "(10) 9991-1111" to 1099911111', function() {
+    expect(VMasker.unmaskPattern('(10) 9991-1111', '(99) 9999-9999')).toEqual('1099911111');
+  });
+
+  it('unmasks the masked value "(10) 11" to 1011', function() {
+    expect(VMasker.unmaskPattern('(10) 11', '(99) 9999-9999')).toEqual('1011');
+  });
+
+  it('unmasks the masked value "+10 11 4444-44" to 1011444444', function() {
+    expect(VMasker.unmaskPattern('+10 11 4444-44', '+99 99 9999-99')).toEqual('1011444444');
+  });
+
+  it('unmasks the masked value "12/12/2000" to 12122000', function() {
+    expect(VMasker.unmaskPattern('12/12/2000', '99/99/9999')).toEqual('12122000');
+  });
+
+  it('unmasks the masked value "10/11" to 1011', function() {
+    expect(VMasker.unmaskPattern('10/11', '99/99/9999')).toEqual('1011');
+  });
+
+  it('unmasks the masked value "2000/12/12" to 20001212', function() {
+    expect(VMasker.unmaskPattern('2000/12/12', '9999/99/99')).toEqual('20001212');
+  });
+
+  it('unmasks the masked value "999.111.111-01" to 99911111101', function() {
+    expect(VMasker.unmaskPattern('999.111.111-01', '999.999.999-99')).toEqual('99911111101');
+  });
+
+  it('unmasks the masked value "101.1" to 1011', function() {
+    expect(VMasker.unmaskPattern('101.1', '999.999.999-99')).toEqual('1011');
+  });
+
+  it('unmasks the masked value "ABC-1234" to ABC', function() {
+    expect(VMasker.unmaskPattern('ABC-1234', 'AAA-1234')).toEqual('ABC');
+  });
+
+  it('returns incomplete result: "AB" when input is AB and pattern is AAA-99', function() {
+    expect(VMasker.unmaskPattern('AB', 'AAA-99')).toEqual('AB');
+  });
+
+  it('unmasks the masked value "9B.GR.D08X0.4.G.117974" to 9BGRD08X04G117974', function() {
+    expect(VMasker.unmaskPattern('9B.GR.D08X0.4.G.117974', 'SS.SS.SSSSS.S.S.SSSSSS')).toEqual('9BGRD08X04G117974');
+  });
+
+  it('unmasks the masked value "BB.G" to BBG', function() {
+    expect(VMasker.unmaskPattern('BB.G', 'SS.SS.SSSSS.S.S.SSSSSS')).toEqual('BBG');
+  });
+
+  it('unmasks the masked value "(4xx) xxx-xxxx" to 4 when the placeholder is x', function(){
+    expect(VMasker.unmaskPattern('(4xx) xxx-xxxx', {pattern: "(999) 999-9999", placeholder: "x"})).toEqual('4');
+  });
+
+  it('unmasks the masked value "(___) ___-_____" to empty when the placeholder is _', function(){
+    expect(VMasker.unmaskPattern('(___) ___-____', {pattern: "(999) 999-9999", placeholder: "_"})).toEqual('');
+  });
+
+  it('unmasks the masked value "(111) 111-1111" to 1111111111 when the placeholder is _', function(){
+    expect(VMasker.unmaskPattern('(111) 111-1111', {pattern: "(999) 999-9999", placeholder: "_"})).toEqual('1111111111');
+  });
+
+  it('unmasks the masked value "(aaa) _____" to aaa999aaaa when the placeholder is _', function(){
+    expect(VMasker.unmaskPattern('(aaa) _____', {pattern: "(AAA) AAAAA", placeholder: "_"})).toEqual('aaa');
+  });
 });
