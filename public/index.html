@@ -31,6 +31,9 @@
 
 			<label for="defaultValues">Default with values</label>
 			<input type="text" id="defaultValues" value="1000">
+
+			<label for="showSignal">Show signal</label>
+			<input type="text" id="showSignal">
 		</fieldset>
 
 		<br>
@@ -76,6 +79,7 @@
 				VMasker(document.getElementById("suffixUnit")).maskMoney({suffixUnit: 'R$'});
 				VMasker(document.getElementById("delimiter")).maskMoney({delimiter: ','});
 				VMasker(document.getElementById("separator")).maskMoney({separator: '.'});
+				VMasker(document.getElementById("showSignal")).maskMoney({showSignal: true});
 
 				// #maskNumber
 				VMasker(document.getElementById("numbers")).maskNumber();
