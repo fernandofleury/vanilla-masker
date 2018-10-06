@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>VanillaMasker</title>
-		<script src="../lib/vanilla-masker.js"></script>
+		<script src="vanilla-masker.js"></script>
 		<link rel="stylesheet" type="text/css" href="styles.css">
 	</head>
 	<body>
@@ -56,6 +56,9 @@
 			<label for="phoneValues">Phone with values</label>
 			<input type="text" id="phoneValues" value="3141232312">
 
+			<label for="phoneValues">Phone with optional Caracter</label>
+			<input type="text" id="phoneOptChar" value="3141232312">
+
 			<label for="phoneValues">Phone with leading +1</label>
 			<input type="text" id="leadingPlus" value="8888888888">
 
@@ -90,6 +93,7 @@
 				// #maskPattern
 				VMasker(document.getElementById("phone")).maskPattern('(99) 9999-9999');
 				VMasker(document.getElementById("phoneValues")).maskPattern('(99) 9999-9999');
+				VMasker(document.getElementById("phoneOptChar")).maskPattern('(99) 9?9999-9999');
 				VMasker(document.getElementById("leadingPlus")).maskPattern('+1 (999) 999-9999');
 				VMasker(document.getElementById("date")).maskPattern('99/99/9999');
 				VMasker(document.getElementById("doc")).maskPattern('999.999.999-99');

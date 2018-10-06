@@ -111,5 +111,31 @@ describe("VanillaMasker.toPattern", function() {
     expect(VMasker.toPattern('aaa999aaaa', {pattern: "(AAA) AAAAA", placeholder: "_"})).toEqual('(aaa) _____');
   });
 
+  it('returns "(61) 91234-5678" pattern with optional character when input is 61912345678', function() {
+    expect(VMasker.toPattern(61912345678, '(99) 9?9999-9999')).toEqual('(61) 91234-5678');
+  });
 
+  it('returns "(10) 9991-1111" pattern with optional character when input is 1099911111', function() {
+    expect(VMasker.toPattern(1099911111, '(99) 9?9999-9999')).toEqual('(10) 9991-1111');
+  });
+
+  it('returns "(10) 11" pattern with optional character when input is 1011', function() {
+    expect(VMasker.toPattern('1011', '(99) 9?9999-9999')).toEqual('(10) 11');
+  });
+
+  it('returns "(10) 1234-1" pattern with optional character when input is 1012341', function() {
+    expect(VMasker.toPattern('1012341', '(99) 9?9999-9999')).toEqual('(10) 1234-1');
+  });
+
+  it('returns "5-3" pattern with optional character when input is 53', function() {
+    expect(VMasker.toPattern('53', '9?9-9?9')).toEqual('5-3');
+  });
+
+  it('returns "51-3" pattern with optional character when input is 513', function() {
+    expect(VMasker.toPattern('513', '9?9-9?9')).toEqual('51-3');
+  });
+
+  it('returns "192.168.201" pattern with optional character when input is 192168201', function() {
+    expect(VMasker.toPattern('1921682011', '9?99.9?99.9?99.9?99')).toEqual('192.168.201.1');
+  });
 });
