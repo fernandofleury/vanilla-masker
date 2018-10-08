@@ -115,6 +115,10 @@ describe("VanillaMasker.toPattern", function() {
     expect(VMasker.toPattern(61912345678, '(99) 9?9999-9999')).toEqual('(61) 91234-5678');
   });
 
+  it('returns "(61) 91234-5678" pattern with optional character when input is 619123456789', function() {
+    expect(VMasker.toPattern(619123456789, '(99) 9?9999-9999')).toEqual('(61) 91234-5678');
+  });
+
   it('returns "(10) 9991-1111" pattern with optional character when input is 1099911111', function() {
     expect(VMasker.toPattern(1099911111, '(99) 9?9999-9999')).toEqual('(10) 9991-1111');
   });
