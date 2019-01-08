@@ -1,6 +1,7 @@
 # What's this
 
 [![Build Status](https://travis-ci.org/vanilla-masker/vanilla-masker.svg)](https://travis-ci.org/vanilla-masker/vanilla-masker)
+[![Known Vulnerabilities](https://snyk.io/test/github/vanilla-masker/vanilla-masker/badge.svg)](https://snyk.io/test/github/vanilla-masker/vanilla-masker)
 
 It's a pure JavaScript mask input.
 Now you can use a simple and pure javascript lib to mask your input elements, without need to load jQuery or Zepto to do it.
